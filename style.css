@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+body {
+    background-image: url('./assets/dinheiro.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    position: relative; 
+    
+}
+body::after {
+    content: '';
+    position: absolute;
+    margin-top: -130px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 0; 
+}
+div.center{
+    margin-top: 130px;
+}
+.main-box {
+    position: relative; 
+    z-index: 1; 
+    width: 500px;
+    background: rgba(244, 244, 244, 0.85); 
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 40px 24px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(7px); 
+}
+
+p {
+    color: #333;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+select, input {
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    height: 48px;
+    width: 100%;
+    margin-bottom: 24px;
+    appearance: none;
+    padding-left: 18px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+button {
+    background: #1bdb14;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    height: 48px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+.result {
+    border: 1px solid #1bdb14;
+    border-radius: 20px;
+    margin-top: 36px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.result div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; 
+}
+
+.result p {
+    text-align: center;
+    margin: 5px ;
+    font-style: italic;
+    font-size: 20px;
+   
+}
+.result p.mValor1 {
+    font-weight: bold;
+}
+
+.result p.mValor2 {
+    font-weight: bold;
+}
+.result div.seta img{
+    height: 100px;
+    max-width: 150px;
+}
+.result div.currency-box img{
+    max-width: 70px;
+}
