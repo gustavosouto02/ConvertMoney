@@ -1,9 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
+html, body {
+    height: 100%; /* Garante que o body e html ocupem a altura total da tela */
 }
 
 body {
@@ -16,12 +12,12 @@ body {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     position: relative; 
-    
+    overflow: hidden; /* Evita rolagem */
 }
+
 body::after {
     content: '';
-    position: absolute;
-    margin-top: -130px;
+    position: fixed; /* Usa fixed para garantir que a sombra cubra toda a tela */
     top: 0;
     left: 0;
     width: 100vw;
@@ -29,16 +25,21 @@ body::after {
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 0; 
 }
-div.center{
-    margin-top: 130px;
+
+.center {
+    display: flex; /* Usa flexbox para centralizar o conteúdo */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Garante que o centro ocupe a altura total da tela */
 }
+
 .main-box {
     position: relative; 
     z-index: 1; 
-    width: 500px;
+    width: 400px; /* Ajustado para aumentar o tamanho */
+    max-width: 90%; /* Evita ultrapassar a largura da tela */
     background: rgba(244, 244, 244, 0.85); 
     border-radius: 20px;
-    margin: 20px auto;
     padding: 40px 24px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(7px); 
@@ -64,6 +65,18 @@ select, input {
     font-size: 20px;
     color: #555;
     cursor: pointer;
+}
+.valor input {
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    height: 48px;
+    width: 100%; /* Garante que o campo de entrada ocupe toda a largura disponível */
+    padding-left: 18px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #555;
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho total */
 }
 
 button {
@@ -110,8 +123,8 @@ button:active {
     margin: 5px ;
     font-style: italic;
     font-size: 20px;
-   
 }
+
 .result p.mValor1 {
     font-weight: bold;
 }
@@ -119,10 +132,12 @@ button:active {
 .result p.mValor2 {
     font-weight: bold;
 }
-.result div.seta img{
-    height: 100px;
-    max-width: 150px;
+
+.result div.seta img {
+    height: 80px; /* Ajustado para imagem menor */
+    width: auto; /* Mantém a proporção da imagem */
 }
-.result div.currency-box img{
+
+.result div.currency-box img {
     max-width: 70px;
 }
