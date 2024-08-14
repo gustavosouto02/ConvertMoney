@@ -9,15 +9,27 @@ const currencyValue = document.querySelector(".currencyValue"); // Valor da moed
 const currencyValueConvert = document.querySelector(".currencyValueConvert"); // Valor da moeda de destino
 const inputCurrencyValue = document.querySelector(".inputCurrency");
 
-// Correção das taxas de conversão
-const rates = {
-    BRL: { USD: 0.19, EUR: 0.16, GBP: 0.14 },
-    USD: { BRL: 5.2, EUR: 1.1, GBP: 0.75 },
-    EUR: { BRL: 6.2, USD: 1.1, GBP: 0.85 },
-    GBP: { BRL: 7.2, USD: 1.33, EUR: 1.18 }
-};
+//api KEY
+const apiKey = "e6c700cd59fd861fac3d7a42";
+const apiUrl = "https://v6.exchangerate-api.com/v6/e6c700cd59fd861fac3d7a42/latest/";
 
-function convertValues() {
+
+// função para pegar as taxas atualizadas
+async function fetchRates(baseCurrency) {
+    try{
+        const response = await fetch(`${apiUrl}${baseCurrency}`);
+        const data = await response.json();
+        if(data.result === "success"){
+            return data.conversion_rates;
+        }else{
+            throw new Error("Erro ao obter as taxas de câmbio.");
+        }
+    }catch (error){
+        console.error("Erro ao buscar as taxas de câmbio.");
+        return null;
+    }
+}
+async function convertValues() {
     const fromCurrency = fromCurrencySelect.value;
     const toCurrency = toCurrencySelect.value;
     const inputValue = parseFloat(inputCurrencyValue.value.replace(/[^\d,]/g, '').replace(',', '.'));
@@ -28,12 +40,17 @@ function convertValues() {
         return;
     }
 
+    const rates = await fetchRates(fromCurrency);
+    if(!rates){
+        currencyValueConvert.innerHTML = "Erro ao obter taxas.";
+        return;
+    }
+
     let convertedValue;
-    if (fromCurrency === toCurrency) {
+    if(fromCurrency === toCurrency){
         convertedValue = inputValue;
-    } else {
-        // Corrige a lógica de conversão para usar a taxa correta
-        convertedValue = inputValue * rates[fromCurrency][toCurrency];
+    }else {
+        convertedValue = inputValue * rates[toCurrency];
     }
 
     // Atualiza o valor da moeda de origem

@@ -141,3 +141,72 @@ button:active {
 .result div.currency-box img {
     max-width: 70px;
 }
+
+/* ajustar site tablet */
+@media (max-width: 768px){
+    .main-box {
+        width: 90%; 
+        padding: 30px 20px;
+    }
+
+    .result div.seta img{
+        height: 60px;
+    }
+
+    button{
+        font-size: 22px;
+    }
+
+    .result p {
+        font-size: 18px;
+    }
+}
+
+/*ajustar site celular*/
+@media (max-width: 480px){
+    body::before {
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 200%; /* Largura e altura maiores para garantir que a rotação cubra toda a tela */
+        height: 200%;
+        background-image: url('./assets/dinheiro.png');
+        background-color: rgba(0, 0, 0, 0.8); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: translate(-50%, -50%) rotate(45deg); /* Centraliza e rotaciona a imagem */
+        z-index: -1;
+    }
+    .main-box{
+        width: 80%;
+        padding: 20px 15px;
+    }
+
+    select, input {
+        margin-bottom: 5px;
+        height: 40px;
+    }
+
+    label.valor input{
+        height: 40px;
+    }
+
+    .result{
+        margin-top: 20px;
+    }
+
+    .result div.seta img{
+        height: 50px;
+    }
+
+    button{
+        font-size: 20px;
+
+    }
+
+    .result p{
+        font-size: 16px;
+    }
+}
